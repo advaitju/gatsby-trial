@@ -9,24 +9,27 @@ class App extends Component {
   }
 
   state = {
-    some: true,
+    output: undefined,
   };
 
-  handleClick() {
-    this.setState(prevState => ({
-      some: !prevState.some,
-    }));
+  componentDidMount() {
+    fetch(
+      `https://jsonplaceholder.typicode.com${this.props.location.pathname.slice(
+        4
+      )}`
+    )
+      .then(response => response.json())
+      .then(json => console.log(json));
   }
 
   render() {
-    console.log(this.props.location.pathname);
-    console.log("some");
     return (
       <Layout>
         <SEO title="Home" />
-        <h1 onClick={this.handleClick}>App</h1>
+        <h1>App</h1>
+        <button onClick={this.handleClick}>JSON</button>
         <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-          {/* <Image /> */}
+          {this.state.output}
         </div>
       </Layout>
     );
