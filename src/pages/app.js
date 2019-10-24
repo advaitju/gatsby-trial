@@ -15,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     fetch(
       `https://jsonplaceholder.typicode.com${this.props.location.pathname.slice(
-        this.props.location.pathname.indexOf("/app")
+        this.props.location.pathname.indexOf("/app") + 4
       )}`
     )
       .then(response => response.json())
