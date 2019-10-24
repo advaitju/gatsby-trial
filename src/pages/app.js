@@ -28,6 +28,9 @@ class App extends Component {
         <SEO title="Home" />
         <h1>App</h1>
         <button onClick={this.handleClick}>JSON</button>
+        <p>{`https://jsonplaceholder.typicode.com${this.props.location.pathname.slice(
+          4
+        )}`}</p>
         <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
           {this.state.output}
         </div>
